@@ -2,10 +2,10 @@ const crypto = require('crypto')
 
 // 使用crypto
 const secret = 'abcdefg'
-const hash = crypto.createHmac('sha256', secret)
+const hsh = crypto.createHmac('sha256', secret)
                     .update('I love cupcakes')
                     .digest('hex')
-console.log('使用ctypto', hash)
+console.log('使用ctypto', hsh)
 
 // 使用cipher
 const cipher = crypto.createCipher('aes192', 'a password')
@@ -31,4 +31,12 @@ console.log('decrypted', decrypted)
 // ab
 
 // 使用 hash
+const hash = crypto.createHash('sha256')
+hash.update('a')
+hash.update('b')
+console.log('hash', hash.digest('hex'))
 
+// a: ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb
+// b: 3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d
+// ab: fb8e20fc2e4c3f248c60c39bd652f3c1347298bb977b8b4d5903b85055620603
+// 先a后b: fb8e20fc2e4c3f248c60c39bd652f3c1347298bb977b8b4d5903b85055620603
